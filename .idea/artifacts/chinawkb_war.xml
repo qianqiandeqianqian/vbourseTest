@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="chinawkb:war">
+    <output-path>$PROJECT_DIR$/chinawkb/target</output-path>
+    <root id="archive" name="vbourse-util.war">
+      <element id="artifact" artifact-name="chinawkb:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,35 @@
+*{font-size:12px;padding:0px;margin: 0px;font-family: "Microsoft YaHei",'Georgia','微软雅黑',"宋体"}
+body{}
+body,form{position:relative;z-index:0;}
+img{border:none;}
+a{text-decoration: none;}
+ul li{list-style: none;}
+a{color:#000;font-family: 'Georgia'}
+a:hover{text-decoration: underline;color:#5B9ED9}
+textarea{overflow-x:hidden;}
+.wrapper{min-width:940px;width:940px;margin:0px auto;position:relative;}
+.rel{position:relative;}
+.pos{position:absolute;}
+.fix{position:fixed;}
+.wh100{position:relative;width:100%;height:100%;}
+.w100{width:100%;}
+.cur{cursor:pointer !important;cursor:hand;}
+
+.inbk{display:inline-block;*display:inline;*zoom:1;}
+.txtlef{text-align: left;}
+.txtrig{text-align: right;}
+.txtcen{text-align: center;}
+.reds{border:solid 1px red;}
+.red{color:red;}
+.clr{clear:both}
+.round{
+    -moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+    border-radius:5px;            /* W3C syntax */
+    border:none;
+    position:relative;
+    z-index:2;
+}
+.body_padding{padding:20px;}
+
+.lang_ul li{width:100px;text-align: center;padding:5px;cursor:pointer;}

@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hucheng.dao.impl.DandanUserMapper">
+  <resultMap id="BaseResultMap" type="com.hucheng.common.entity.DandanUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="moble" jdbcType="VARCHAR" property="moble" />
+    <result column="mobletime" jdbcType="INTEGER" property="mobletime" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="tpwdsetting" jdbcType="VARCHAR" property="tpwdsetting" />
+    <result column="paypassword" jdbcType="VARCHAR" property="paypassword" />
+    <result column="invit_1" jdbcType="VARCHAR" property="invit1" />
+    <result column="invit_2" jdbcType="VARCHAR" property="invit2" />
+    <result column="invit_3" jdbcType="VARCHAR" property="invit3" />
+    <result column="truename" jdbcType="VARCHAR" property="truename" />
+    <result column="idcard" jdbcType="VARCHAR" property="idcard" />
+    <result column="idcardauth" jdbcType="BIT" property="idcardauth" />
+    <result column="idcardimg1" jdbcType="VARCHAR" property="idcardimg1" />
+    <result column="idcardimg2" jdbcType="VARCHAR" property="idcardimg2" />
+    <result column="idcardinfo" jdbcType="VARCHAR" property="idcardinfo" />
+    <result column="logins" jdbcType="INTEGER" property="logins" />
+    <result column="ga" jdbcType="VARCHAR" property="ga" />
+    <result column="addip" jdbcType="VARCHAR" property="addip" />
+    <result column="addr" jdbcType="VARCHAR" property="addr" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="addtime" jdbcType="INTEGER" property="addtime" />
+    <result column="endtime" jdbcType="INTEGER" property="endtime" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="alipay" jdbcType="VARCHAR" property="alipay" />
+    <result column="invit" jdbcType="VARCHAR" property="invit" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="awardid" jdbcType="INTEGER" property="awardid" />
+    <result column="awardstatus" jdbcType="SMALLINT" property="awardstatus" />
+    <result column="awardname" jdbcType="VARCHAR" property="awardname" />
+    <result column="awardNumAll" jdbcType="INTEGER" property="awardnumall" />
+    <result column="awardNumToday" jdbcType="INTEGER" property="awardnumtoday" />
+    <result column="awardTotalToday" jdbcType="INTEGER" property="awardtotaltoday" />
+    <result column="awardtime" jdbcType="INTEGER" property="awardtime" />
+    <result column="regaward" jdbcType="BIT" property="regaward" />
+    <result column="usertype" jdbcType="BIT" property="usertype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, username, moble, mobletime, password, tpwdsetting, paypassword, invit_1, invit_2, 
+    invit_3, truename, idcard, idcardauth, idcardimg1, idcardimg2, idcardinfo, logins, 
+    ga, addip, addr, sort, addtime, endtime, status, email, alipay, invit, token, awardid, 
+    awardstatus, awardname, awardNumAll, awardNumToday, awardTotalToday, awardtime, regaward, 
+    usertype
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dandan_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dandan_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hucheng.common.entity.DandanUser">
+    insert into dandan_user (id, username, moble, 
+      mobletime, password, tpwdsetting, 
+      paypassword, invit_1, invit_2, 
+      invit_3, truename, idcard, 
+      idcardauth, idcardimg1, idcardimg2, 
+      idcardinfo, logins, ga, 
+      addip, addr, sort, 
+      addtime, endtime, status, 
+      email, alipay, invit, 
+      token, awardid, awardstatus, 
+      awardname, awardNumAll, awardNumToday, 
+      awardTotalToday, awardtime, regaward, 
+      usertype)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{moble,jdbcType=VARCHAR}, 
+      #{mobletime,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{tpwdsetting,jdbcType=VARCHAR}, 
+      #{paypassword,jdbcType=VARCHAR}, #{invit1,jdbcType=VARCHAR}, #{invit2,jdbcType=VARCHAR}, 
+      #{invit3,jdbcType=VARCHAR}, #{truename,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{idcardauth,jdbcType=BIT}, #{idcardimg1,jdbcType=VARCHAR}, #{idcardimg2,jdbcType=VARCHAR}, 
+      #{idcardinfo,jdbcType=VARCHAR}, #{logins,jdbcType=INTEGER}, #{ga,jdbcType=VARCHAR}, 
+      #{addip,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{addtime,jdbcType=INTEGER}, #{endtime,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
+      #{email,jdbcType=VARCHAR}, #{alipay,jdbcType=VARCHAR}, #{invit,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{awardid,jdbcType=INTEGER}, #{awardstatus,jdbcType=SMALLINT}, 
+      #{awardname,jdbcType=VARCHAR}, #{awardnumall,jdbcType=INTEGER}, #{awardnumtoday,jdbcType=INTEGER}, 
+      #{awardtotaltoday,jdbcType=INTEGER}, #{awardtime,jdbcType=INTEGER}, #{regaward,jdbcType=BIT}, 
+      #{usertype,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hucheng.common.entity.DandanUser">
+    insert into dandan_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="moble != null">
+        moble,
+      </if>
+      <if test="mobletime != null">
+        mobletime,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="tpwdsetting != null">
+        tpwdsetting,
+      </if>
+      <if test="paypassword != null">
+        paypassword,
+      </if>
+      <if test="invit1 != null">
+        invit_1,
+      </if>
+      <if test="invit2 != null">
+        invit_2,
+      </if>
+      <if test="invit3 != null">
+        invit_3,
+      </if>
+      <if test="truename != null">
+        truename,
+      </if>
+      <if test="idcard != null">
+        idcard,
+      </if>
+      <if test="idcardauth != null">
+        idcardauth,
+      </if>
+      <if test="idcardimg1 != null">
+        idcardimg1,
+      </if>
+      <if test="idcardimg2 != null">
+        idcardimg2,
+      </if>
+      <if test="idcardinfo != null">
+        idcardinfo,
+      </if>
+      <if test="logins != null">
+        logins,
+      </if>
+      <if test="ga != null">
+        ga,
+      </if>
+      <if test="addip != null">
+        addip,
+      </if>
+      <if test="addr != null">
+        addr,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="addtime != null">
+        addtime,
+      </if>
+      <if test="endtime != null">
+        endtime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="alipay != null">
+        alipay,
+      </if>
+      <if test="invit != null">
+        invit,
+      </if>
+      <if test="token != null">
+        token,
+      </if>
+      <if test="awardid != null">
+        awardid,
+      </if>
+      <if test="awardstatus != null">
+        awardstatus,
+      </if>
+      <if test="awardname != null">
+        awardname,
+      </if>
+      <if test="awardnumall != null">
+        awardNumAll,
+      </if>
+      <if test="awardnumtoday != null">
+        awardNumToday,
+      </if>
+      <if test="awardtotaltoday != null">
+        awardTotalToday,
+      </if>
+      <if test="awardtime != null">
+        awardtime,
+      </if>
+      <if test="regaward != null">
+        regaward,
+      </if>
+      <if test="usertype != null">
+        usertype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="moble != null">
+        #{moble,jdbcType=VARCHAR},
+      </if>
+      <if test="mobletime != null">
+        #{mobletime,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="tpwdsetting != null">
+        #{tpwdsetting,jdbcType=VARCHAR},
+      </if>
+      <if test="paypassword != null">
+        #{paypassword,jdbcType=VARCHAR},
+      </if>
+      <if test="invit1 != null">
+        #{invit1,jdbcType=VARCHAR},
+      </if>
+      <if test="invit2 != null">
+        #{invit2,jdbcType=VARCHAR},
+      </if>
+      <if test="invit3 != null">
+        #{invit3,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardauth != null">
+        #{idcardauth,jdbcType=BIT},
+      </if>
+      <if test="idcardimg1 != null">
+        #{idcardimg1,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardimg2 != null">
+        #{idcardimg2,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardinfo != null">
+        #{idcardinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="logins != null">
+        #{logins,jdbcType=INTEGER},
+      </if>
+      <if test="ga != null">
+        #{ga,jdbcType=VARCHAR},
+      </if>
+      <if test="addip != null">
+        #{addip,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=INTEGER},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay != null">
+        #{alipay,jdbcType=VARCHAR},
+      </if>
+      <if test="invit != null">
+        #{invit,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="awardid != null">
+        #{awardid,jdbcType=INTEGER},
+      </if>
+      <if test="awardstatus != null">
+        #{awardstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="awardname != null">
+        #{awardname,jdbcType=VARCHAR},
+      </if>
+      <if test="awardnumall != null">
+        #{awardnumall,jdbcType=INTEGER},
+      </if>
+      <if test="awardnumtoday != null">
+        #{awardnumtoday,jdbcType=INTEGER},
+      </if>
+      <if test="awardtotaltoday != null">
+        #{awardtotaltoday,jdbcType=INTEGER},
+      </if>
+      <if test="awardtime != null">
+        #{awardtime,jdbcType=INTEGER},
+      </if>
+      <if test="regaward != null">
+        #{regaward,jdbcType=BIT},
+      </if>
+      <if test="usertype != null">
+        #{usertype,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hucheng.common.entity.DandanUser">
+    update dandan_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="moble != null">
+        moble = #{moble,jdbcType=VARCHAR},
+      </if>
+      <if test="mobletime != null">
+        mobletime = #{mobletime,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="tpwdsetting != null">
+        tpwdsetting = #{tpwdsetting,jdbcType=VARCHAR},
+      </if>
+      <if test="paypassword != null">
+        paypassword = #{paypassword,jdbcType=VARCHAR},
+      </if>
+      <if test="invit1 != null">
+        invit_1 = #{invit1,jdbcType=VARCHAR},
+      </if>
+      <if test="invit2 != null">
+        invit_2 = #{invit2,jdbcType=VARCHAR},
+      </if>
+      <if test="invit3 != null">
+        invit_3 = #{invit3,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        truename = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardauth != null">
+        idcardauth = #{idcardauth,jdbcType=BIT},
+      </if>
+      <if test="idcardimg1 != null">
+        idcardimg1 = #{idcardimg1,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardimg2 != null">
+        idcardimg2 = #{idcardimg2,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardinfo != null">
+        idcardinfo = #{idcardinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="logins != null">
+        logins = #{logins,jdbcType=INTEGER},
+      </if>
+      <if test="ga != null">
+        ga = #{ga,jdbcType=VARCHAR},
+      </if>
+      <if test="addip != null">
+        addip = #{addip,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null">
+        addtime = #{addtime,jdbcType=INTEGER},
+      </if>
+      <if test="endtime != null">
+        endtime = #{endtime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay != null">
+        alipay = #{alipay,jdbcType=VARCHAR},
+      </if>
+      <if test="invit != null">
+        invit = #{invit,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="awardid != null">
+        awardid = #{awardid,jdbcType=INTEGER},
+      </if>
+      <if test="awardstatus != null">
+        awardstatus = #{awardstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="awardname != null">
+        awardname = #{awardname,jdbcType=VARCHAR},
+      </if>
+      <if test="awardnumall != null">
+        awardNumAll = #{awardnumall,jdbcType=INTEGER},
+      </if>
+      <if test="awardnumtoday != null">
+        awardNumToday = #{awardnumtoday,jdbcType=INTEGER},
+      </if>
+      <if test="awardtotaltoday != null">
+        awardTotalToday = #{awardtotaltoday,jdbcType=INTEGER},
+      </if>
+      <if test="awardtime != null">
+        awardtime = #{awardtime,jdbcType=INTEGER},
+      </if>
+      <if test="regaward != null">
+        regaward = #{regaward,jdbcType=BIT},
+      </if>
+      <if test="usertype != null">
+        usertype = #{usertype,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hucheng.common.entity.DandanUser">
+    update dandan_user
+    set username = #{username,jdbcType=VARCHAR},
+      moble = #{moble,jdbcType=VARCHAR},
+      mobletime = #{mobletime,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
+      tpwdsetting = #{tpwdsetting,jdbcType=VARCHAR},
+      paypassword = #{paypassword,jdbcType=VARCHAR},
+      invit_1 = #{invit1,jdbcType=VARCHAR},
+      invit_2 = #{invit2,jdbcType=VARCHAR},
+      invit_3 = #{invit3,jdbcType=VARCHAR},
+      truename = #{truename,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      idcardauth = #{idcardauth,jdbcType=BIT},
+      idcardimg1 = #{idcardimg1,jdbcType=VARCHAR},
+      idcardimg2 = #{idcardimg2,jdbcType=VARCHAR},
+      idcardinfo = #{idcardinfo,jdbcType=VARCHAR},
+      logins = #{logins,jdbcType=INTEGER},
+      ga = #{ga,jdbcType=VARCHAR},
+      addip = #{addip,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      addtime = #{addtime,jdbcType=INTEGER},
+      endtime = #{endtime,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      email = #{email,jdbcType=VARCHAR},
+      alipay = #{alipay,jdbcType=VARCHAR},
+      invit = #{invit,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      awardid = #{awardid,jdbcType=INTEGER},
+      awardstatus = #{awardstatus,jdbcType=SMALLINT},
+      awardname = #{awardname,jdbcType=VARCHAR},
+      awardNumAll = #{awardnumall,jdbcType=INTEGER},
+      awardNumToday = #{awardnumtoday,jdbcType=INTEGER},
+      awardTotalToday = #{awardtotaltoday,jdbcType=INTEGER},
+      awardtime = #{awardtime,jdbcType=INTEGER},
+      regaward = #{regaward,jdbcType=BIT},
+      usertype = #{usertype,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--用户名查询-->
+  <select id="findByUsername" resultType="DandanUser">
+    SELECT  * FROM  dandan_user WHERE username=#{username}
+  </select>
+  <!--用户名密码查询-->
+  <select id="findByUsernameAndPswd" resultType="DandanUser">
+    SELECT  * FROM  dandan_user WHERE username=#{username} AND password=#{password}
+  </select>
+
+</mapper>

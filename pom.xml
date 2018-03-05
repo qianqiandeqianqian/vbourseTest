@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <groupId>com.hucheng</groupId>
+    <artifactId>vbourse</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>vbourse:application:parent</name>
+
+    <properties>
+        <junit.version>4.12</junit.version>
+        <!-- spring版本号 -->
+        <spring.version>4.1.3.RELEASE</spring.version>
+        <!-- mybatis版本号 -->
+        <mybatis.version>3.3.1</mybatis.version>
+        <!-- logback日志文件管理包版本 -->
+        <slf4j.version>1.7.7</slf4j.version>
+        <logback.version>0.9.28</logback.version>
+        <aspectj.version>1.6.12</aspectj.version>
+        <!--redis版本-->
+        <jedis.version>2.6.1</jedis.version>
+        <mysql.version>5.1.30</mysql.version>
+    </properties>
+
+    <modules>
+        <module>common</module>
+        <module>chinawkb</module>
+        <module>util</module>
+        <module>service</module>
+        <module>dao</module>
+        <module>api</module>
+        <!--<module>wallet</module>-->
+        <module>rmi</module>
+    </modules>
+
+
+    <build>
+        <finalName>vbourse-util</finalName>
+    </build>
+</project>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hucheng.dao.impl.TdTrade2hMapper">
+  <resultMap id="BaseResultMap" type="com.hucheng.common.entity.TdTrade2h">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="coinname" jdbcType="VARCHAR" property="coinname" />
+    <result column="d_coinname" jdbcType="VARCHAR" property="dCoinname" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="time" jdbcType="BIGINT" property="time" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, coinname, d_coinname, date, type, time, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from td_trade_2h
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from td_trade_2h
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hucheng.common.entity.TdTrade2h">
+    insert into td_trade_2h (id, coinname, d_coinname, 
+      date, type, time, status
+      )
+    values (#{id,jdbcType=INTEGER}, #{coinname,jdbcType=VARCHAR}, #{dCoinname,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{time,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hucheng.common.entity.TdTrade2h">
+    insert into td_trade_2h
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="coinname != null">
+        coinname,
+      </if>
+      <if test="dCoinname != null">
+        d_coinname,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="coinname != null">
+        #{coinname,jdbcType=VARCHAR},
+      </if>
+      <if test="dCoinname != null">
+        #{dCoinname,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hucheng.common.entity.TdTrade2h">
+    update td_trade_2h
+    <set>
+      <if test="coinname != null">
+        coinname = #{coinname,jdbcType=VARCHAR},
+      </if>
+      <if test="dCoinname != null">
+        d_coinname = #{dCoinname,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hucheng.common.entity.TdTrade2h">
+    update td_trade_2h
+    set coinname = #{coinname,jdbcType=VARCHAR},
+      d_coinname = #{dCoinname,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      time = #{time,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

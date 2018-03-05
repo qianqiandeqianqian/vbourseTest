@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hucheng.dao.impl.FincRmbczMapper">
+  <resultMap id="BaseResultMap" type="com.hucheng.common.entity.FincRmbcz">
+    <id column="rcid" jdbcType="INTEGER" property="rcid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="num" jdbcType="DECIMAL" property="num" />
+    <result column="mum" jdbcType="DECIMAL" property="mum" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="aname" jdbcType="VARCHAR" property="aname" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="systime" jdbcType="TIMESTAMP" property="systime" />
+    <result column="dtime" jdbcType="TIMESTAMP" property="dtime" />
+    <result column="accountid" jdbcType="INTEGER" property="accountid" />
+    <result column="audittime" jdbcType="TIMESTAMP" property="audittime" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="quetime" jdbcType="TIMESTAMP" property="quetime" />
+    <result column="quetype" jdbcType="VARCHAR" property="quetype" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="sign" jdbcType="VARCHAR" property="sign" />
+    <result column="isdeleted" jdbcType="INTEGER" property="isdeleted" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hucheng.common.entity.FincRmbcz">
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rcid, userid, num, mum, type, account, aname, time, systime, dtime, accountid, audittime, 
+    username, quetime, quetype, status, sign, isdeleted
+  </sql>
+  <sql id="Blob_Column_List">
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from finc_rmbcz
+    where rcid = #{rcid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from finc_rmbcz
+    where rcid = #{rcid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hucheng.common.entity.FincRmbcz">
+    insert into finc_rmbcz (rcid, userid, num, 
+      mum, type, account, 
+      aname, time, systime, 
+      dtime, accountid, audittime, 
+      username, quetime, quetype, 
+      status, sign, isdeleted, 
+      remark)
+    values (#{rcid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{num,jdbcType=DECIMAL}, 
+      #{mum,jdbcType=DECIMAL}, #{type,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{aname,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, #{systime,jdbcType=TIMESTAMP}, 
+      #{dtime,jdbcType=TIMESTAMP}, #{accountid,jdbcType=INTEGER}, #{audittime,jdbcType=TIMESTAMP}, 
+      #{username,jdbcType=VARCHAR}, #{quetime,jdbcType=TIMESTAMP}, #{quetype,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{sign,jdbcType=VARCHAR}, #{isdeleted,jdbcType=INTEGER}, 
+      #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hucheng.common.entity.FincRmbcz">
+    insert into finc_rmbcz
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rcid != null">
+        rcid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="mum != null">
+        mum,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="aname != null">
+        aname,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="systime != null">
+        systime,
+      </if>
+      <if test="dtime != null">
+        dtime,
+      </if>
+      <if test="accountid != null">
+        accountid,
+      </if>
+      <if test="audittime != null">
+        audittime,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="quetime != null">
+        quetime,
+      </if>
+      <if test="quetype != null">
+        quetype,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="sign != null">
+        sign,
+      </if>
+      <if test="isdeleted != null">
+        isdeleted,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rcid != null">
+        #{rcid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="mum != null">
+        #{mum,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="aname != null">
+        #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="systime != null">
+        #{systime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dtime != null">
+        #{dtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountid != null">
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="audittime != null">
+        #{audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="quetime != null">
+        #{quetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="quetype != null">
+        #{quetype,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null">
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null">
+        #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hucheng.common.entity.FincRmbcz">
+    update finc_rmbcz
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="mum != null">
+        mum = #{mum,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="aname != null">
+        aname = #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="systime != null">
+        systime = #{systime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dtime != null">
+        dtime = #{dtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountid != null">
+        accountid = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="audittime != null">
+        audittime = #{audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="quetime != null">
+        quetime = #{quetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="quetype != null">
+        quetype = #{quetype,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null">
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null">
+        isdeleted = #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where rcid = #{rcid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hucheng.common.entity.FincRmbcz">
+    update finc_rmbcz
+    set userid = #{userid,jdbcType=INTEGER},
+      num = #{num,jdbcType=DECIMAL},
+      mum = #{mum,jdbcType=DECIMAL},
+      type = #{type,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      aname = #{aname,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      systime = #{systime,jdbcType=TIMESTAMP},
+      dtime = #{dtime,jdbcType=TIMESTAMP},
+      accountid = #{accountid,jdbcType=INTEGER},
+      audittime = #{audittime,jdbcType=TIMESTAMP},
+      username = #{username,jdbcType=VARCHAR},
+      quetime = #{quetime,jdbcType=TIMESTAMP},
+      quetype = #{quetype,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      sign = #{sign,jdbcType=VARCHAR},
+      isdeleted = #{isdeleted,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where rcid = #{rcid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hucheng.common.entity.FincRmbcz">
+    update finc_rmbcz
+    set userid = #{userid,jdbcType=INTEGER},
+      num = #{num,jdbcType=DECIMAL},
+      mum = #{mum,jdbcType=DECIMAL},
+      type = #{type,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      aname = #{aname,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      systime = #{systime,jdbcType=TIMESTAMP},
+      dtime = #{dtime,jdbcType=TIMESTAMP},
+      accountid = #{accountid,jdbcType=INTEGER},
+      audittime = #{audittime,jdbcType=TIMESTAMP},
+      username = #{username,jdbcType=VARCHAR},
+      quetime = #{quetime,jdbcType=TIMESTAMP},
+      quetype = #{quetype,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      sign = #{sign,jdbcType=VARCHAR},
+      isdeleted = #{isdeleted,jdbcType=INTEGER}
+    where rcid = #{rcid,jdbcType=INTEGER}
+  </update>
+</mapper>

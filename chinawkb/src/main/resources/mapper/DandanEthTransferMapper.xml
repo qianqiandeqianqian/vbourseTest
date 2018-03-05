@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hucheng.dao.impl.DandanEthTransferMapper">
+  <resultMap id="BaseResultMap" type="com.hucheng.common.entity.DandanEthTransfer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="coinName" jdbcType="VARCHAR" property="coinname" />
+    <result column="from" jdbcType="VARCHAR" property="from" />
+    <result column="to" jdbcType="VARCHAR" property="to" />
+    <result column="contractAddress" jdbcType="VARCHAR" property="contractaddress" />
+    <result column="value" jdbcType="BIGINT" property="value" />
+    <result column="transactionHash" jdbcType="VARCHAR" property="transactionhash" />
+    <result column="gasUsed" jdbcType="BIGINT" property="gasused" />
+    <result column="sysTime" jdbcType="TIMESTAMP" property="systime" />
+    <result column="transTime" jdbcType="TIMESTAMP" property="transtime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="tranSign" jdbcType="VARCHAR" property="transign" />
+    <result column="isDeleted" jdbcType="INTEGER" property="isdeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, coinName, from, to, contractAddress, value, transactionHash, gasUsed, sysTime, 
+    transTime, status, tranSign, isDeleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dandan_eth_transfer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dandan_eth_transfer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hucheng.common.entity.DandanEthTransfer">
+    insert into dandan_eth_transfer (id, coinName, from, 
+      to, contractAddress, value, 
+      transactionHash, gasUsed, sysTime, 
+      transTime, status, tranSign, 
+      isDeleted)
+    values (#{id,jdbcType=INTEGER}, #{coinname,jdbcType=VARCHAR}, #{from,jdbcType=VARCHAR}, 
+      #{to,jdbcType=VARCHAR}, #{contractaddress,jdbcType=VARCHAR}, #{value,jdbcType=BIGINT}, 
+      #{transactionhash,jdbcType=VARCHAR}, #{gasused,jdbcType=BIGINT}, #{systime,jdbcType=TIMESTAMP}, 
+      #{transtime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{transign,jdbcType=VARCHAR}, 
+      #{isdeleted,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hucheng.common.entity.DandanEthTransfer">
+    insert into dandan_eth_transfer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="coinname != null">
+        coinName,
+      </if>
+      <if test="from != null">
+        from,
+      </if>
+      <if test="to != null">
+        to,
+      </if>
+      <if test="contractaddress != null">
+        contractAddress,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="transactionhash != null">
+        transactionHash,
+      </if>
+      <if test="gasused != null">
+        gasUsed,
+      </if>
+      <if test="systime != null">
+        sysTime,
+      </if>
+      <if test="transtime != null">
+        transTime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="transign != null">
+        tranSign,
+      </if>
+      <if test="isdeleted != null">
+        isDeleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="coinname != null">
+        #{coinname,jdbcType=VARCHAR},
+      </if>
+      <if test="from != null">
+        #{from,jdbcType=VARCHAR},
+      </if>
+      <if test="to != null">
+        #{to,jdbcType=VARCHAR},
+      </if>
+      <if test="contractaddress != null">
+        #{contractaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=BIGINT},
+      </if>
+      <if test="transactionhash != null">
+        #{transactionhash,jdbcType=VARCHAR},
+      </if>
+      <if test="gasused != null">
+        #{gasused,jdbcType=BIGINT},
+      </if>
+      <if test="systime != null">
+        #{systime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transtime != null">
+        #{transtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="transign != null">
+        #{transign,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null">
+        #{isdeleted,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hucheng.common.entity.DandanEthTransfer">
+    update dandan_eth_transfer
+    <set>
+      <if test="coinname != null">
+        coinName = #{coinname,jdbcType=VARCHAR},
+      </if>
+      <if test="from != null">
+        from = #{from,jdbcType=VARCHAR},
+      </if>
+      <if test="to != null">
+        to = #{to,jdbcType=VARCHAR},
+      </if>
+      <if test="contractaddress != null">
+        contractAddress = #{contractaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        value = #{value,jdbcType=BIGINT},
+      </if>
+      <if test="transactionhash != null">
+        transactionHash = #{transactionhash,jdbcType=VARCHAR},
+      </if>
+      <if test="gasused != null">
+        gasUsed = #{gasused,jdbcType=BIGINT},
+      </if>
+      <if test="systime != null">
+        sysTime = #{systime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transtime != null">
+        transTime = #{transtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="transign != null">
+        tranSign = #{transign,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null">
+        isDeleted = #{isdeleted,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hucheng.common.entity.DandanEthTransfer">
+    update dandan_eth_transfer
+    set coinName = #{coinname,jdbcType=VARCHAR},
+      from = #{from,jdbcType=VARCHAR},
+      to = #{to,jdbcType=VARCHAR},
+      contractAddress = #{contractaddress,jdbcType=VARCHAR},
+      value = #{value,jdbcType=BIGINT},
+      transactionHash = #{transactionhash,jdbcType=VARCHAR},
+      gasUsed = #{gasused,jdbcType=BIGINT},
+      sysTime = #{systime,jdbcType=TIMESTAMP},
+      transTime = #{transtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      tranSign = #{transign,jdbcType=VARCHAR},
+      isDeleted = #{isdeleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

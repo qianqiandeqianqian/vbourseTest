@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hucheng.dao.impl.DandanMyzcMapper">
+  <resultMap id="BaseResultMap" type="com.hucheng.common.entity.DandanMyzc">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="coinname" jdbcType="VARCHAR" property="coinname" />
+    <result column="txid" jdbcType="VARCHAR" property="txid" />
+    <result column="num" jdbcType="DECIMAL" property="num" />
+    <result column="fee" jdbcType="DECIMAL" property="fee" />
+    <result column="mum" jdbcType="DECIMAL" property="mum" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="addtime" jdbcType="INTEGER" property="addtime" />
+    <result column="endtime" jdbcType="INTEGER" property="endtime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="ishand" jdbcType="TINYINT" property="ishand" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userid, username, coinname, txid, num, fee, mum, sort, addtime, endtime, status, 
+    ishand
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dandan_myzc
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dandan_myzc
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hucheng.common.entity.DandanMyzc">
+    insert into dandan_myzc (id, userid, username, 
+      coinname, txid, num, 
+      fee, mum, sort, addtime, 
+      endtime, status, ishand
+      )
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{coinname,jdbcType=VARCHAR}, #{txid,jdbcType=VARCHAR}, #{num,jdbcType=DECIMAL}, 
+      #{fee,jdbcType=DECIMAL}, #{mum,jdbcType=DECIMAL}, #{sort,jdbcType=INTEGER}, #{addtime,jdbcType=INTEGER}, 
+      #{endtime,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{ishand,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hucheng.common.entity.DandanMyzc">
+    insert into dandan_myzc
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="coinname != null">
+        coinname,
+      </if>
+      <if test="txid != null">
+        txid,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="fee != null">
+        fee,
+      </if>
+      <if test="mum != null">
+        mum,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="addtime != null">
+        addtime,
+      </if>
+      <if test="endtime != null">
+        endtime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="ishand != null">
+        ishand,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="coinname != null">
+        #{coinname,jdbcType=VARCHAR},
+      </if>
+      <if test="txid != null">
+        #{txid,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="fee != null">
+        #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="mum != null">
+        #{mum,jdbcType=DECIMAL},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=INTEGER},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ishand != null">
+        #{ishand,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hucheng.common.entity.DandanMyzc">
+    update dandan_myzc
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="coinname != null">
+        coinname = #{coinname,jdbcType=VARCHAR},
+      </if>
+      <if test="txid != null">
+        txid = #{txid,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="fee != null">
+        fee = #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="mum != null">
+        mum = #{mum,jdbcType=DECIMAL},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null">
+        addtime = #{addtime,jdbcType=INTEGER},
+      </if>
+      <if test="endtime != null">
+        endtime = #{endtime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ishand != null">
+        ishand = #{ishand,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hucheng.common.entity.DandanMyzc">
+    update dandan_myzc
+    set userid = #{userid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      coinname = #{coinname,jdbcType=VARCHAR},
+      txid = #{txid,jdbcType=VARCHAR},
+      num = #{num,jdbcType=DECIMAL},
+      fee = #{fee,jdbcType=DECIMAL},
+      mum = #{mum,jdbcType=DECIMAL},
+      sort = #{sort,jdbcType=INTEGER},
+      addtime = #{addtime,jdbcType=INTEGER},
+      endtime = #{endtime,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      ishand = #{ishand,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

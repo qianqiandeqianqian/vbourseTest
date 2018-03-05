@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hucheng.dao.impl.SysCoinMapper">
+  <resultMap id="BaseResultMap" type="com.hucheng.common.entity.SysCoin">
+    <id column="coincode" jdbcType="VARCHAR" property="coincode" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="usname" jdbcType="VARCHAR" property="usname" />
+    <result column="enname" jdbcType="VARCHAR" property="enname" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="sort" jdbcType="VARCHAR" property="sort" />
+    <result column="ontime" jdbcType="TIMESTAMP" property="ontime" />
+    <result column="offtime" jdbcType="TIMESTAMP" property="offtime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="mainaddr" jdbcType="VARCHAR" property="mainaddr" />
+    <result column="isvirtual" jdbcType="INTEGER" property="isvirtual" />
+    <result column="wallettype" jdbcType="VARCHAR" property="wallettype" />
+    <result column="zrstatus" jdbcType="INTEGER" property="zrstatus" />
+    <result column="zrtype" jdbcType="INTEGER" property="zrtype" />
+    <result column="zrfeeratio" jdbcType="DECIMAL" property="zrfeeratio" />
+    <result column="zrfeenum" jdbcType="INTEGER" property="zrfeenum" />
+    <result column="zcstatus" jdbcType="INTEGER" property="zcstatus" />
+    <result column="zctype" jdbcType="INTEGER" property="zctype" />
+    <result column="zcfeeratio" jdbcType="DECIMAL" property="zcfeeratio" />
+    <result column="zcfeenum" jdbcType="INTEGER" property="zcfeenum" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hucheng.common.entity.SysCoin">
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    coincode, cid, usname, enname, img, sort, ontime, offtime, status, mainaddr, isvirtual,
+    wallettype, zrstatus, zrtype, zrfeeratio, zrfeenum, zcstatus, zctype, zcfeeratio,
+    zcfeenum
+  </sql>
+  <sql id="Blob_Column_List">
+    introduction, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sys_coin
+    where coincode = #{coincode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_coin
+    where coincode = #{coincode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hucheng.common.entity.SysCoin">
+    insert into sys_coin (coincode, cid, usname,
+    enname, img, sort,
+    ontime, offtime, status,
+    mainaddr, isvirtual, wallettype,
+    zrstatus, zrtype, zrfeeratio,
+    zrfeenum, zcstatus, zctype,
+    zcfeeratio, zcfeenum, introduction,
+    remark)
+    values (#{coincode,jdbcType=VARCHAR}, #{cid,jdbcType=INTEGER}, #{usname,jdbcType=VARCHAR},
+    #{enname,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, #{sort,jdbcType=VARCHAR},
+    #{ontime,jdbcType=TIMESTAMP}, #{offtime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER},
+    #{mainaddr,jdbcType=VARCHAR}, #{isvirtual,jdbcType=INTEGER}, #{wallettype,jdbcType=VARCHAR},
+    #{zrstatus,jdbcType=INTEGER}, #{zrtype,jdbcType=INTEGER}, #{zrfeeratio,jdbcType=DECIMAL},
+    #{zrfeenum,jdbcType=INTEGER}, #{zcstatus,jdbcType=INTEGER}, #{zctype,jdbcType=INTEGER},
+    #{zcfeeratio,jdbcType=DECIMAL}, #{zcfeenum,jdbcType=INTEGER}, #{introduction,jdbcType=LONGVARCHAR},
+    #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hucheng.common.entity.SysCoin">
+    insert into sys_coin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="coincode != null">
+        coincode,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="usname != null">
+        usname,
+      </if>
+      <if test="enname != null">
+        enname,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="ontime != null">
+        ontime,
+      </if>
+      <if test="offtime != null">
+        offtime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="mainaddr != null">
+        mainaddr,
+      </if>
+      <if test="isvirtual != null">
+        isvirtual,
+      </if>
+      <if test="wallettype != null">
+        wallettype,
+      </if>
+      <if test="zrstatus != null">
+        zrstatus,
+      </if>
+      <if test="zrtype != null">
+        zrtype,
+      </if>
+      <if test="zrfeeratio != null">
+        zrfeeratio,
+      </if>
+      <if test="zrfeenum != null">
+        zrfeenum,
+      </if>
+      <if test="zcstatus != null">
+        zcstatus,
+      </if>
+      <if test="zctype != null">
+        zctype,
+      </if>
+      <if test="zcfeeratio != null">
+        zcfeeratio,
+      </if>
+      <if test="zcfeenum != null">
+        zcfeenum,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="coincode != null">
+        #{coincode,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="usname != null">
+        #{usname,jdbcType=VARCHAR},
+      </if>
+      <if test="enname != null">
+        #{enname,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="ontime != null">
+        #{ontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offtime != null">
+        #{offtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="mainaddr != null">
+        #{mainaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="isvirtual != null">
+        #{isvirtual,jdbcType=INTEGER},
+      </if>
+      <if test="wallettype != null">
+        #{wallettype,jdbcType=VARCHAR},
+      </if>
+      <if test="zrstatus != null">
+        #{zrstatus,jdbcType=INTEGER},
+      </if>
+      <if test="zrtype != null">
+        #{zrtype,jdbcType=INTEGER},
+      </if>
+      <if test="zrfeeratio != null">
+        #{zrfeeratio,jdbcType=DECIMAL},
+      </if>
+      <if test="zrfeenum != null">
+        #{zrfeenum,jdbcType=INTEGER},
+      </if>
+      <if test="zcstatus != null">
+        #{zcstatus,jdbcType=INTEGER},
+      </if>
+      <if test="zctype != null">
+        #{zctype,jdbcType=INTEGER},
+      </if>
+      <if test="zcfeeratio != null">
+        #{zcfeeratio,jdbcType=DECIMAL},
+      </if>
+      <if test="zcfeenum != null">
+        #{zcfeenum,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hucheng.common.entity.SysCoin">
+    update sys_coin
+    <set>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="usname != null">
+        usname = #{usname,jdbcType=VARCHAR},
+      </if>
+      <if test="enname != null">
+        enname = #{enname,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="ontime != null">
+        ontime = #{ontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offtime != null">
+        offtime = #{offtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="mainaddr != null">
+        mainaddr = #{mainaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="isvirtual != null">
+        isvirtual = #{isvirtual,jdbcType=INTEGER},
+      </if>
+      <if test="wallettype != null">
+        wallettype = #{wallettype,jdbcType=VARCHAR},
+      </if>
+      <if test="zrstatus != null">
+        zrstatus = #{zrstatus,jdbcType=INTEGER},
+      </if>
+      <if test="zrtype != null">
+        zrtype = #{zrtype,jdbcType=INTEGER},
+      </if>
+      <if test="zrfeeratio != null">
+        zrfeeratio = #{zrfeeratio,jdbcType=DECIMAL},
+      </if>
+      <if test="zrfeenum != null">
+        zrfeenum = #{zrfeenum,jdbcType=INTEGER},
+      </if>
+      <if test="zcstatus != null">
+        zcstatus = #{zcstatus,jdbcType=INTEGER},
+      </if>
+      <if test="zctype != null">
+        zctype = #{zctype,jdbcType=INTEGER},
+      </if>
+      <if test="zcfeeratio != null">
+        zcfeeratio = #{zcfeeratio,jdbcType=DECIMAL},
+      </if>
+      <if test="zcfeenum != null">
+        zcfeenum = #{zcfeenum,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where coincode = #{coincode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hucheng.common.entity.SysCoin">
+    update sys_coin
+    set cid = #{cid,jdbcType=INTEGER},
+      usname = #{usname,jdbcType=VARCHAR},
+      enname = #{enname,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=VARCHAR},
+      ontime = #{ontime,jdbcType=TIMESTAMP},
+      offtime = #{offtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      mainaddr = #{mainaddr,jdbcType=VARCHAR},
+      isvirtual = #{isvirtual,jdbcType=INTEGER},
+      wallettype = #{wallettype,jdbcType=VARCHAR},
+      zrstatus = #{zrstatus,jdbcType=INTEGER},
+      zrtype = #{zrtype,jdbcType=INTEGER},
+      zrfeeratio = #{zrfeeratio,jdbcType=DECIMAL},
+      zrfeenum = #{zrfeenum,jdbcType=INTEGER},
+      zcstatus = #{zcstatus,jdbcType=INTEGER},
+      zctype = #{zctype,jdbcType=INTEGER},
+      zcfeeratio = #{zcfeeratio,jdbcType=DECIMAL},
+      zcfeenum = #{zcfeenum,jdbcType=INTEGER}
+    where coincode = #{coincode,jdbcType=VARCHAR}
+  </update>
+</mapper>

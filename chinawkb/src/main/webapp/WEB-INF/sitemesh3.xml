@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+    <!--默认情况下，
+        sitemesh 只对 HTTP 响应头中 Content-Type 为 text/html 的类型进行拦截和装饰，
+        我们可以添加更多的 mime 类型-->
+  <mime-type>text/html</mime-type>
+  
+  <!-- 默认装饰器，当下面的路径都不匹配时，启用该装饰器进行装饰 
+  <mapping decorator="/default-decorator.html"/>
+  -->
+ 
+  <!-- 对同一路径，启用多个装饰器-->
+  <mapping>
+    <path>/*</path>
+    <decorator>/WEB-INF/decorator/main-decorator.jsp</decorator>
+  </mapping>
+
+  <mapping>
+    <path>/admin/*</path>
+    <decorator>/WEB-INF/decorator/admin/main-decorator.jsp</decorator>
+  </mapping>
+
+  <!--不进行渲染-->
+  <mapping path="/admin/login" exclue="true"/>
+   <!-- 自定义 tag 规则 -->
+  <!--<content-processor>-->
+    <!--<tag-rule-bundle class="com.lyn.tag.ImgBundle" />-->
+  <!--</content-processor>-->
+  
+</sitemesh>

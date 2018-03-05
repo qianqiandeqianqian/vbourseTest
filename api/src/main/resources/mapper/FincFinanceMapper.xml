@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hucheng.dao.impl.FincFinanceMapper">
+  <resultMap id="BaseResultMap" type="com.hucheng.common.entity.FincFinance">
+    <id column="fcid" jdbcType="INTEGER" property="fcid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="transname" jdbcType="VARCHAR" property="transname" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="d_coincode" jdbcType="VARCHAR" property="dCoincode" />
+    <result column="dbnum" jdbcType="DECIMAL" property="dbnum" />
+    <result column="dbnumd" jdbcType="DECIMAL" property="dbnumd" />
+    <result column="dbtotal" jdbcType="DECIMAL" property="dbtotal" />
+    <result column="danum" jdbcType="DECIMAL" property="danum" />
+    <result column="danumd" jdbcType="DECIMAL" property="danumd" />
+    <result column="datotal" jdbcType="DECIMAL" property="datotal" />
+    <result column="dnum" jdbcType="DECIMAL" property="dnum" />
+    <result column="fee_coincode" jdbcType="VARCHAR" property="feeCoincode" />
+    <result column="fbnum" jdbcType="DECIMAL" property="fbnum" />
+    <result column="fbnumd" jdbcType="DECIMAL" property="fbnumd" />
+    <result column="fbtotal" jdbcType="DECIMAL" property="fbtotal" />
+    <result column="fanum" jdbcType="DECIMAL" property="fanum" />
+    <result column="fanumd" jdbcType="DECIMAL" property="fanumd" />
+    <result column="fatotal" jdbcType="DECIMAL" property="fatotal" />
+    <result column="fnum" jdbcType="DECIMAL" property="fnum" />
+    <result column="trans_coincode" jdbcType="VARCHAR" property="transCoincode" />
+    <result column="tbnum" jdbcType="DECIMAL" property="tbnum" />
+    <result column="tbnumd" jdbcType="DECIMAL" property="tbnumd" />
+    <result column="tbtotal" jdbcType="DECIMAL" property="tbtotal" />
+    <result column="tanum" jdbcType="DECIMAL" property="tanum" />
+    <result column="tanumd" jdbcType="DECIMAL" property="tanumd" />
+    <result column="tatotal" jdbcType="DECIMAL" property="tatotal" />
+    <result column="tnum" jdbcType="DECIMAL" property="tnum" />
+    <result column="systime" jdbcType="TIMESTAMP" property="systime" />
+    <result column="sign" jdbcType="VARCHAR" property="sign" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hucheng.common.entity.FincFinance">
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    fcid, userid, transname, type, d_coincode, dbnum, dbnumd, dbtotal, danum, danumd, 
+    datotal, dnum, fee_coincode, fbnum, fbnumd, fbtotal, fanum, fanumd, fatotal, fnum, 
+    trans_coincode, tbnum, tbnumd, tbtotal, tanum, tanumd, tatotal, tnum, systime, sign, 
+    status
+  </sql>
+  <sql id="Blob_Column_List">
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from finc_finance
+    where fcid = #{fcid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from finc_finance
+    where fcid = #{fcid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hucheng.common.entity.FincFinance">
+    insert into finc_finance (fcid, userid, transname, 
+      type, d_coincode, dbnum, 
+      dbnumd, dbtotal, danum, 
+      danumd, datotal, dnum, 
+      fee_coincode, fbnum, fbnumd, 
+      fbtotal, fanum, fanumd, 
+      fatotal, fnum, trans_coincode, 
+      tbnum, tbnumd, tbtotal, 
+      tanum, tanumd, tatotal, 
+      tnum, systime, sign, 
+      status, remark)
+    values (#{fcid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{transname,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{dCoincode,jdbcType=VARCHAR}, #{dbnum,jdbcType=DECIMAL}, 
+      #{dbnumd,jdbcType=DECIMAL}, #{dbtotal,jdbcType=DECIMAL}, #{danum,jdbcType=DECIMAL}, 
+      #{danumd,jdbcType=DECIMAL}, #{datotal,jdbcType=DECIMAL}, #{dnum,jdbcType=DECIMAL}, 
+      #{feeCoincode,jdbcType=VARCHAR}, #{fbnum,jdbcType=DECIMAL}, #{fbnumd,jdbcType=DECIMAL}, 
+      #{fbtotal,jdbcType=DECIMAL}, #{fanum,jdbcType=DECIMAL}, #{fanumd,jdbcType=DECIMAL}, 
+      #{fatotal,jdbcType=DECIMAL}, #{fnum,jdbcType=DECIMAL}, #{transCoincode,jdbcType=VARCHAR}, 
+      #{tbnum,jdbcType=DECIMAL}, #{tbnumd,jdbcType=DECIMAL}, #{tbtotal,jdbcType=DECIMAL}, 
+      #{tanum,jdbcType=DECIMAL}, #{tanumd,jdbcType=DECIMAL}, #{tatotal,jdbcType=DECIMAL}, 
+      #{tnum,jdbcType=DECIMAL}, #{systime,jdbcType=TIMESTAMP}, #{sign,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hucheng.common.entity.FincFinance">
+    insert into finc_finance
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fcid != null">
+        fcid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="transname != null">
+        transname,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="dCoincode != null">
+        d_coincode,
+      </if>
+      <if test="dbnum != null">
+        dbnum,
+      </if>
+      <if test="dbnumd != null">
+        dbnumd,
+      </if>
+      <if test="dbtotal != null">
+        dbtotal,
+      </if>
+      <if test="danum != null">
+        danum,
+      </if>
+      <if test="danumd != null">
+        danumd,
+      </if>
+      <if test="datotal != null">
+        datotal,
+      </if>
+      <if test="dnum != null">
+        dnum,
+      </if>
+      <if test="feeCoincode != null">
+        fee_coincode,
+      </if>
+      <if test="fbnum != null">
+        fbnum,
+      </if>
+      <if test="fbnumd != null">
+        fbnumd,
+      </if>
+      <if test="fbtotal != null">
+        fbtotal,
+      </if>
+      <if test="fanum != null">
+        fanum,
+      </if>
+      <if test="fanumd != null">
+        fanumd,
+      </if>
+      <if test="fatotal != null">
+        fatotal,
+      </if>
+      <if test="fnum != null">
+        fnum,
+      </if>
+      <if test="transCoincode != null">
+        trans_coincode,
+      </if>
+      <if test="tbnum != null">
+        tbnum,
+      </if>
+      <if test="tbnumd != null">
+        tbnumd,
+      </if>
+      <if test="tbtotal != null">
+        tbtotal,
+      </if>
+      <if test="tanum != null">
+        tanum,
+      </if>
+      <if test="tanumd != null">
+        tanumd,
+      </if>
+      <if test="tatotal != null">
+        tatotal,
+      </if>
+      <if test="tnum != null">
+        tnum,
+      </if>
+      <if test="systime != null">
+        systime,
+      </if>
+      <if test="sign != null">
+        sign,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fcid != null">
+        #{fcid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="transname != null">
+        #{transname,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="dCoincode != null">
+        #{dCoincode,jdbcType=VARCHAR},
+      </if>
+      <if test="dbnum != null">
+        #{dbnum,jdbcType=DECIMAL},
+      </if>
+      <if test="dbnumd != null">
+        #{dbnumd,jdbcType=DECIMAL},
+      </if>
+      <if test="dbtotal != null">
+        #{dbtotal,jdbcType=DECIMAL},
+      </if>
+      <if test="danum != null">
+        #{danum,jdbcType=DECIMAL},
+      </if>
+      <if test="danumd != null">
+        #{danumd,jdbcType=DECIMAL},
+      </if>
+      <if test="datotal != null">
+        #{datotal,jdbcType=DECIMAL},
+      </if>
+      <if test="dnum != null">
+        #{dnum,jdbcType=DECIMAL},
+      </if>
+      <if test="feeCoincode != null">
+        #{feeCoincode,jdbcType=VARCHAR},
+      </if>
+      <if test="fbnum != null">
+        #{fbnum,jdbcType=DECIMAL},
+      </if>
+      <if test="fbnumd != null">
+        #{fbnumd,jdbcType=DECIMAL},
+      </if>
+      <if test="fbtotal != null">
+        #{fbtotal,jdbcType=DECIMAL},
+      </if>
+      <if test="fanum != null">
+        #{fanum,jdbcType=DECIMAL},
+      </if>
+      <if test="fanumd != null">
+        #{fanumd,jdbcType=DECIMAL},
+      </if>
+      <if test="fatotal != null">
+        #{fatotal,jdbcType=DECIMAL},
+      </if>
+      <if test="fnum != null">
+        #{fnum,jdbcType=DECIMAL},
+      </if>
+      <if test="transCoincode != null">
+        #{transCoincode,jdbcType=VARCHAR},
+      </if>
+      <if test="tbnum != null">
+        #{tbnum,jdbcType=DECIMAL},
+      </if>
+      <if test="tbnumd != null">
+        #{tbnumd,jdbcType=DECIMAL},
+      </if>
+      <if test="tbtotal != null">
+        #{tbtotal,jdbcType=DECIMAL},
+      </if>
+      <if test="tanum != null">
+        #{tanum,jdbcType=DECIMAL},
+      </if>
+      <if test="tanumd != null">
+        #{tanumd,jdbcType=DECIMAL},
+      </if>
+      <if test="tatotal != null">
+        #{tatotal,jdbcType=DECIMAL},
+      </if>
+      <if test="tnum != null">
+        #{tnum,jdbcType=DECIMAL},
+      </if>
+      <if test="systime != null">
+        #{systime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sign != null">
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hucheng.common.entity.FincFinance">
+    update finc_finance
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="transname != null">
+        transname = #{transname,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="dCoincode != null">
+        d_coincode = #{dCoincode,jdbcType=VARCHAR},
+      </if>
+      <if test="dbnum != null">
+        dbnum = #{dbnum,jdbcType=DECIMAL},
+      </if>
+      <if test="dbnumd != null">
+        dbnumd = #{dbnumd,jdbcType=DECIMAL},
+      </if>
+      <if test="dbtotal != null">
+        dbtotal = #{dbtotal,jdbcType=DECIMAL},
+      </if>
+      <if test="danum != null">
+        danum = #{danum,jdbcType=DECIMAL},
+      </if>
+      <if test="danumd != null">
+        danumd = #{danumd,jdbcType=DECIMAL},
+      </if>
+      <if test="datotal != null">
+        datotal = #{datotal,jdbcType=DECIMAL},
+      </if>
+      <if test="dnum != null">
+        dnum = #{dnum,jdbcType=DECIMAL},
+      </if>
+      <if test="feeCoincode != null">
+        fee_coincode = #{feeCoincode,jdbcType=VARCHAR},
+      </if>
+      <if test="fbnum != null">
+        fbnum = #{fbnum,jdbcType=DECIMAL},
+      </if>
+      <if test="fbnumd != null">
+        fbnumd = #{fbnumd,jdbcType=DECIMAL},
+      </if>
+      <if test="fbtotal != null">
+        fbtotal = #{fbtotal,jdbcType=DECIMAL},
+      </if>
+      <if test="fanum != null">
+        fanum = #{fanum,jdbcType=DECIMAL},
+      </if>
+      <if test="fanumd != null">
+        fanumd = #{fanumd,jdbcType=DECIMAL},
+      </if>
+      <if test="fatotal != null">
+        fatotal = #{fatotal,jdbcType=DECIMAL},
+      </if>
+      <if test="fnum != null">
+        fnum = #{fnum,jdbcType=DECIMAL},
+      </if>
+      <if test="transCoincode != null">
+        trans_coincode = #{transCoincode,jdbcType=VARCHAR},
+      </if>
+      <if test="tbnum != null">
+        tbnum = #{tbnum,jdbcType=DECIMAL},
+      </if>
+      <if test="tbnumd != null">
+        tbnumd = #{tbnumd,jdbcType=DECIMAL},
+      </if>
+      <if test="tbtotal != null">
+        tbtotal = #{tbtotal,jdbcType=DECIMAL},
+      </if>
+      <if test="tanum != null">
+        tanum = #{tanum,jdbcType=DECIMAL},
+      </if>
+      <if test="tanumd != null">
+        tanumd = #{tanumd,jdbcType=DECIMAL},
+      </if>
+      <if test="tatotal != null">
+        tatotal = #{tatotal,jdbcType=DECIMAL},
+      </if>
+      <if test="tnum != null">
+        tnum = #{tnum,jdbcType=DECIMAL},
+      </if>
+      <if test="systime != null">
+        systime = #{systime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sign != null">
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where fcid = #{fcid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hucheng.common.entity.FincFinance">
+    update finc_finance
+    set userid = #{userid,jdbcType=INTEGER},
+      transname = #{transname,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      d_coincode = #{dCoincode,jdbcType=VARCHAR},
+      dbnum = #{dbnum,jdbcType=DECIMAL},
+      dbnumd = #{dbnumd,jdbcType=DECIMAL},
+      dbtotal = #{dbtotal,jdbcType=DECIMAL},
+      danum = #{danum,jdbcType=DECIMAL},
+      danumd = #{danumd,jdbcType=DECIMAL},
+      datotal = #{datotal,jdbcType=DECIMAL},
+      dnum = #{dnum,jdbcType=DECIMAL},
+      fee_coincode = #{feeCoincode,jdbcType=VARCHAR},
+      fbnum = #{fbnum,jdbcType=DECIMAL},
+      fbnumd = #{fbnumd,jdbcType=DECIMAL},
+      fbtotal = #{fbtotal,jdbcType=DECIMAL},
+      fanum = #{fanum,jdbcType=DECIMAL},
+      fanumd = #{fanumd,jdbcType=DECIMAL},
+      fatotal = #{fatotal,jdbcType=DECIMAL},
+      fnum = #{fnum,jdbcType=DECIMAL},
+      trans_coincode = #{transCoincode,jdbcType=VARCHAR},
+      tbnum = #{tbnum,jdbcType=DECIMAL},
+      tbnumd = #{tbnumd,jdbcType=DECIMAL},
+      tbtotal = #{tbtotal,jdbcType=DECIMAL},
+      tanum = #{tanum,jdbcType=DECIMAL},
+      tanumd = #{tanumd,jdbcType=DECIMAL},
+      tatotal = #{tatotal,jdbcType=DECIMAL},
+      tnum = #{tnum,jdbcType=DECIMAL},
+      systime = #{systime,jdbcType=TIMESTAMP},
+      sign = #{sign,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where fcid = #{fcid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hucheng.common.entity.FincFinance">
+    update finc_finance
+    set userid = #{userid,jdbcType=INTEGER},
+      transname = #{transname,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      d_coincode = #{dCoincode,jdbcType=VARCHAR},
+      dbnum = #{dbnum,jdbcType=DECIMAL},
+      dbnumd = #{dbnumd,jdbcType=DECIMAL},
+      dbtotal = #{dbtotal,jdbcType=DECIMAL},
+      danum = #{danum,jdbcType=DECIMAL},
+      danumd = #{danumd,jdbcType=DECIMAL},
+      datotal = #{datotal,jdbcType=DECIMAL},
+      dnum = #{dnum,jdbcType=DECIMAL},
+      fee_coincode = #{feeCoincode,jdbcType=VARCHAR},
+      fbnum = #{fbnum,jdbcType=DECIMAL},
+      fbnumd = #{fbnumd,jdbcType=DECIMAL},
+      fbtotal = #{fbtotal,jdbcType=DECIMAL},
+      fanum = #{fanum,jdbcType=DECIMAL},
+      fanumd = #{fanumd,jdbcType=DECIMAL},
+      fatotal = #{fatotal,jdbcType=DECIMAL},
+      fnum = #{fnum,jdbcType=DECIMAL},
+      trans_coincode = #{transCoincode,jdbcType=VARCHAR},
+      tbnum = #{tbnum,jdbcType=DECIMAL},
+      tbnumd = #{tbnumd,jdbcType=DECIMAL},
+      tbtotal = #{tbtotal,jdbcType=DECIMAL},
+      tanum = #{tanum,jdbcType=DECIMAL},
+      tanumd = #{tanumd,jdbcType=DECIMAL},
+      tatotal = #{tatotal,jdbcType=DECIMAL},
+      tnum = #{tnum,jdbcType=DECIMAL},
+      systime = #{systime,jdbcType=TIMESTAMP},
+      sign = #{sign,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where fcid = #{fcid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hucheng.dao.impl.FicCoinzrMapper">
+  <resultMap id="BaseResultMap" type="com.hucheng.common.entity.FicCoinzr">
+    <id column="zrid" jdbcType="INTEGER" property="zrid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="showname" jdbcType="VARCHAR" property="showname" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="num" jdbcType="DECIMAL" property="num" />
+    <result column="fee" jdbcType="DECIMAL" property="fee" />
+    <result column="mum" jdbcType="DECIMAL" property="mum" />
+    <result column="transhash" jdbcType="VARCHAR" property="transhash" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="audittime" jdbcType="TIMESTAMP" property="audittime" />
+    <result column="accountid" jdbcType="INTEGER" property="accountid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="dtime" jdbcType="TIMESTAMP" property="dtime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="sign" jdbcType="VARCHAR" property="sign" />
+    <result column="filepath" jdbcType="VARCHAR" property="filepath" />
+    <result column="isdeleted" jdbcType="INTEGER" property="isdeleted" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hucheng.common.entity.FicCoinzr">
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    zrid, userid, showname, type, num, fee, mum, transhash, time, audittime, accountid, 
+    name, dtime, status, sign, filepath, isdeleted
+  </sql>
+  <sql id="Blob_Column_List">
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from fic_coinzr
+    where zrid = #{zrid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from fic_coinzr
+    where zrid = #{zrid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hucheng.common.entity.FicCoinzr">
+    insert into fic_coinzr (zrid, userid, showname, 
+      type, num, fee, mum, 
+      transhash, time, audittime, 
+      accountid, name, dtime, 
+      status, sign, filepath, 
+      isdeleted, remark)
+    values (#{zrid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{showname,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{num,jdbcType=DECIMAL}, #{fee,jdbcType=DECIMAL}, #{mum,jdbcType=DECIMAL}, 
+      #{transhash,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, #{audittime,jdbcType=TIMESTAMP}, 
+      #{accountid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{dtime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{sign,jdbcType=VARCHAR}, #{filepath,jdbcType=VARCHAR}, 
+      #{isdeleted,jdbcType=INTEGER}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hucheng.common.entity.FicCoinzr">
+    insert into fic_coinzr
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="zrid != null">
+        zrid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="showname != null">
+        showname,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="fee != null">
+        fee,
+      </if>
+      <if test="mum != null">
+        mum,
+      </if>
+      <if test="transhash != null">
+        transhash,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="audittime != null">
+        audittime,
+      </if>
+      <if test="accountid != null">
+        accountid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="dtime != null">
+        dtime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="sign != null">
+        sign,
+      </if>
+      <if test="filepath != null">
+        filepath,
+      </if>
+      <if test="isdeleted != null">
+        isdeleted,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="zrid != null">
+        #{zrid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="showname != null">
+        #{showname,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="fee != null">
+        #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="mum != null">
+        #{mum,jdbcType=DECIMAL},
+      </if>
+      <if test="transhash != null">
+        #{transhash,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="audittime != null">
+        #{audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountid != null">
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dtime != null">
+        #{dtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null">
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null">
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null">
+        #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hucheng.common.entity.FicCoinzr">
+    update fic_coinzr
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="showname != null">
+        showname = #{showname,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="fee != null">
+        fee = #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="mum != null">
+        mum = #{mum,jdbcType=DECIMAL},
+      </if>
+      <if test="transhash != null">
+        transhash = #{transhash,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="audittime != null">
+        audittime = #{audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountid != null">
+        accountid = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dtime != null">
+        dtime = #{dtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null">
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null">
+        filepath = #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null">
+        isdeleted = #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where zrid = #{zrid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hucheng.common.entity.FicCoinzr">
+    update fic_coinzr
+    set userid = #{userid,jdbcType=INTEGER},
+      showname = #{showname,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      num = #{num,jdbcType=DECIMAL},
+      fee = #{fee,jdbcType=DECIMAL},
+      mum = #{mum,jdbcType=DECIMAL},
+      transhash = #{transhash,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      audittime = #{audittime,jdbcType=TIMESTAMP},
+      accountid = #{accountid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      dtime = #{dtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      sign = #{sign,jdbcType=VARCHAR},
+      filepath = #{filepath,jdbcType=VARCHAR},
+      isdeleted = #{isdeleted,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where zrid = #{zrid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hucheng.common.entity.FicCoinzr">
+    update fic_coinzr
+    set userid = #{userid,jdbcType=INTEGER},
+      showname = #{showname,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      num = #{num,jdbcType=DECIMAL},
+      fee = #{fee,jdbcType=DECIMAL},
+      mum = #{mum,jdbcType=DECIMAL},
+      transhash = #{transhash,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      audittime = #{audittime,jdbcType=TIMESTAMP},
+      accountid = #{accountid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      dtime = #{dtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      sign = #{sign,jdbcType=VARCHAR},
+      filepath = #{filepath,jdbcType=VARCHAR},
+      isdeleted = #{isdeleted,jdbcType=INTEGER}
+    where zrid = #{zrid,jdbcType=INTEGER}
+  </update>
+</mapper>

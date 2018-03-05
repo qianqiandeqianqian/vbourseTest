@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hucheng.dao.impl.DandanUserCoinMapper">
+  <resultMap id="BaseResultMap" type="com.hucheng.common.entity.DandanUserCoin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="cny" jdbcType="DECIMAL" property="cny" />
+    <result column="cnyd" jdbcType="DECIMAL" property="cnyd" />
+    <result column="btc" jdbcType="DECIMAL" property="btc" />
+    <result column="btcd" jdbcType="DECIMAL" property="btcd" />
+    <result column="btcb" jdbcType="VARCHAR" property="btcb" />
+    <result column="ltc" jdbcType="DECIMAL" property="ltc" />
+    <result column="ltcd" jdbcType="DECIMAL" property="ltcd" />
+    <result column="ltcb" jdbcType="VARCHAR" property="ltcb" />
+    <result column="eth" jdbcType="DECIMAL" property="eth" />
+    <result column="ethd" jdbcType="DECIMAL" property="ethd" />
+    <result column="ethb" jdbcType="VARCHAR" property="ethb" />
+    <result column="wkb" jdbcType="DECIMAL" property="wkb" />
+    <result column="wkbd" jdbcType="DECIMAL" property="wkbd" />
+    <result column="wkbb" jdbcType="VARCHAR" property="wkbb" />
+    <result column="llt" jdbcType="DECIMAL" property="llt" />
+    <result column="lltd" jdbcType="DECIMAL" property="lltd" />
+    <result column="lltb" jdbcType="VARCHAR" property="lltb" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userid, cny, cnyd, btc, btcd, btcb, ltc, ltcd, ltcb, eth, ethd, ethb, wkb, wkbd, 
+    wkbb, llt, lltd, lltb
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dandan_user_coin
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dandan_user_coin
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hucheng.common.entity.DandanUserCoin">
+    insert into dandan_user_coin (id, userid, cny, 
+      cnyd, btc, btcd, btcb, 
+      ltc, ltcd, ltcb, eth, 
+      ethd, ethb, wkb, wkbd, 
+      wkbb, llt, lltd, lltb
+      )
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{cny,jdbcType=DECIMAL}, 
+      #{cnyd,jdbcType=DECIMAL}, #{btc,jdbcType=DECIMAL}, #{btcd,jdbcType=DECIMAL}, #{btcb,jdbcType=VARCHAR}, 
+      #{ltc,jdbcType=DECIMAL}, #{ltcd,jdbcType=DECIMAL}, #{ltcb,jdbcType=VARCHAR}, #{eth,jdbcType=DECIMAL}, 
+      #{ethd,jdbcType=DECIMAL}, #{ethb,jdbcType=VARCHAR}, #{wkb,jdbcType=DECIMAL}, #{wkbd,jdbcType=DECIMAL}, 
+      #{wkbb,jdbcType=VARCHAR}, #{llt,jdbcType=DECIMAL}, #{lltd,jdbcType=DECIMAL}, #{lltb,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hucheng.common.entity.DandanUserCoin">
+    insert into dandan_user_coin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="cny != null">
+        cny,
+      </if>
+      <if test="cnyd != null">
+        cnyd,
+      </if>
+      <if test="btc != null">
+        btc,
+      </if>
+      <if test="btcd != null">
+        btcd,
+      </if>
+      <if test="btcb != null">
+        btcb,
+      </if>
+      <if test="ltc != null">
+        ltc,
+      </if>
+      <if test="ltcd != null">
+        ltcd,
+      </if>
+      <if test="ltcb != null">
+        ltcb,
+      </if>
+      <if test="eth != null">
+        eth,
+      </if>
+      <if test="ethd != null">
+        ethd,
+      </if>
+      <if test="ethb != null">
+        ethb,
+      </if>
+      <if test="wkb != null">
+        wkb,
+      </if>
+      <if test="wkbd != null">
+        wkbd,
+      </if>
+      <if test="wkbb != null">
+        wkbb,
+      </if>
+      <if test="llt != null">
+        llt,
+      </if>
+      <if test="lltd != null">
+        lltd,
+      </if>
+      <if test="lltb != null">
+        lltb,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="cny != null">
+        #{cny,jdbcType=DECIMAL},
+      </if>
+      <if test="cnyd != null">
+        #{cnyd,jdbcType=DECIMAL},
+      </if>
+      <if test="btc != null">
+        #{btc,jdbcType=DECIMAL},
+      </if>
+      <if test="btcd != null">
+        #{btcd,jdbcType=DECIMAL},
+      </if>
+      <if test="btcb != null">
+        #{btcb,jdbcType=VARCHAR},
+      </if>
+      <if test="ltc != null">
+        #{ltc,jdbcType=DECIMAL},
+      </if>
+      <if test="ltcd != null">
+        #{ltcd,jdbcType=DECIMAL},
+      </if>
+      <if test="ltcb != null">
+        #{ltcb,jdbcType=VARCHAR},
+      </if>
+      <if test="eth != null">
+        #{eth,jdbcType=DECIMAL},
+      </if>
+      <if test="ethd != null">
+        #{ethd,jdbcType=DECIMAL},
+      </if>
+      <if test="ethb != null">
+        #{ethb,jdbcType=VARCHAR},
+      </if>
+      <if test="wkb != null">
+        #{wkb,jdbcType=DECIMAL},
+      </if>
+      <if test="wkbd != null">
+        #{wkbd,jdbcType=DECIMAL},
+      </if>
+      <if test="wkbb != null">
+        #{wkbb,jdbcType=VARCHAR},
+      </if>
+      <if test="llt != null">
+        #{llt,jdbcType=DECIMAL},
+      </if>
+      <if test="lltd != null">
+        #{lltd,jdbcType=DECIMAL},
+      </if>
+      <if test="lltb != null">
+        #{lltb,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hucheng.common.entity.DandanUserCoin">
+    update dandan_user_coin
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="cny != null">
+        cny = #{cny,jdbcType=DECIMAL},
+      </if>
+      <if test="cnyd != null">
+        cnyd = #{cnyd,jdbcType=DECIMAL},
+      </if>
+      <if test="btc != null">
+        btc = #{btc,jdbcType=DECIMAL},
+      </if>
+      <if test="btcd != null">
+        btcd = #{btcd,jdbcType=DECIMAL},
+      </if>
+      <if test="btcb != null">
+        btcb = #{btcb,jdbcType=VARCHAR},
+      </if>
+      <if test="ltc != null">
+        ltc = #{ltc,jdbcType=DECIMAL},
+      </if>
+      <if test="ltcd != null">
+        ltcd = #{ltcd,jdbcType=DECIMAL},
+      </if>
+      <if test="ltcb != null">
+        ltcb = #{ltcb,jdbcType=VARCHAR},
+      </if>
+      <if test="eth != null">
+        eth = #{eth,jdbcType=DECIMAL},
+      </if>
+      <if test="ethd != null">
+        ethd = #{ethd,jdbcType=DECIMAL},
+      </if>
+      <if test="ethb != null">
+        ethb = #{ethb,jdbcType=VARCHAR},
+      </if>
+      <if test="wkb != null">
+        wkb = #{wkb,jdbcType=DECIMAL},
+      </if>
+      <if test="wkbd != null">
+        wkbd = #{wkbd,jdbcType=DECIMAL},
+      </if>
+      <if test="wkbb != null">
+        wkbb = #{wkbb,jdbcType=VARCHAR},
+      </if>
+      <if test="llt != null">
+        llt = #{llt,jdbcType=DECIMAL},
+      </if>
+      <if test="lltd != null">
+        lltd = #{lltd,jdbcType=DECIMAL},
+      </if>
+      <if test="lltb != null">
+        lltb = #{lltb,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hucheng.common.entity.DandanUserCoin">
+    update dandan_user_coin
+    set userid = #{userid,jdbcType=INTEGER},
+      cny = #{cny,jdbcType=DECIMAL},
+      cnyd = #{cnyd,jdbcType=DECIMAL},
+      btc = #{btc,jdbcType=DECIMAL},
+      btcd = #{btcd,jdbcType=DECIMAL},
+      btcb = #{btcb,jdbcType=VARCHAR},
+      ltc = #{ltc,jdbcType=DECIMAL},
+      ltcd = #{ltcd,jdbcType=DECIMAL},
+      ltcb = #{ltcb,jdbcType=VARCHAR},
+      eth = #{eth,jdbcType=DECIMAL},
+      ethd = #{ethd,jdbcType=DECIMAL},
+      ethb = #{ethb,jdbcType=VARCHAR},
+      wkb = #{wkb,jdbcType=DECIMAL},
+      wkbd = #{wkbd,jdbcType=DECIMAL},
+      wkbb = #{wkbb,jdbcType=VARCHAR},
+      llt = #{llt,jdbcType=DECIMAL},
+      lltd = #{lltd,jdbcType=DECIMAL},
+      lltb = #{lltb,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>

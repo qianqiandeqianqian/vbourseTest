@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hucheng.dao.impl.TdTradeMapper">
+  <resultMap id="BaseResultMap" type="com.hucheng.common.entity.TdTrade">
+    <id column="tdid" jdbcType="INTEGER" property="tdid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="coincode" jdbcType="VARCHAR" property="coincode" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="num" jdbcType="DECIMAL" property="num" />
+    <result column="deal" jdbcType="DECIMAL" property="deal" />
+    <result column="g_coincode" jdbcType="VARCHAR" property="gCoincode" />
+    <result column="gnum" jdbcType="DECIMAL" property="gnum" />
+    <result column="f_coincode" jdbcType="VARCHAR" property="fCoincode" />
+    <result column="fnum" jdbcType="DECIMAL" property="fnum" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="tradetime" jdbcType="TIMESTAMP" property="tradetime" />
+    <result column="dealtime" jdbcType="TIMESTAMP" property="dealtime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="tradesign" jdbcType="VARCHAR" property="tradesign" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tdid, userid, coincode, price, num, deal, g_coincode, gnum, f_coincode, fnum, type, 
+    tradetime, dealtime, status, tradesign
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from td_trade
+    where tdid = #{tdid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from td_trade
+    where tdid = #{tdid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hucheng.common.entity.TdTrade">
+    insert into td_trade (tdid, userid, coincode, 
+      price, num, deal, g_coincode, 
+      gnum, f_coincode, fnum, 
+      type, tradetime, dealtime, 
+      status, tradesign)
+    values (#{tdid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{coincode,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{num,jdbcType=DECIMAL}, #{deal,jdbcType=DECIMAL}, #{gCoincode,jdbcType=VARCHAR}, 
+      #{gnum,jdbcType=DECIMAL}, #{fCoincode,jdbcType=VARCHAR}, #{fnum,jdbcType=DECIMAL}, 
+      #{type,jdbcType=INTEGER}, #{tradetime,jdbcType=TIMESTAMP}, #{dealtime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{tradesign,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hucheng.common.entity.TdTrade">
+    insert into td_trade
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tdid != null">
+        tdid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="coincode != null">
+        coincode,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="deal != null">
+        deal,
+      </if>
+      <if test="gCoincode != null">
+        g_coincode,
+      </if>
+      <if test="gnum != null">
+        gnum,
+      </if>
+      <if test="fCoincode != null">
+        f_coincode,
+      </if>
+      <if test="fnum != null">
+        fnum,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="tradetime != null">
+        tradetime,
+      </if>
+      <if test="dealtime != null">
+        dealtime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="tradesign != null">
+        tradesign,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tdid != null">
+        #{tdid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="coincode != null">
+        #{coincode,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="deal != null">
+        #{deal,jdbcType=DECIMAL},
+      </if>
+      <if test="gCoincode != null">
+        #{gCoincode,jdbcType=VARCHAR},
+      </if>
+      <if test="gnum != null">
+        #{gnum,jdbcType=DECIMAL},
+      </if>
+      <if test="fCoincode != null">
+        #{fCoincode,jdbcType=VARCHAR},
+      </if>
+      <if test="fnum != null">
+        #{fnum,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="tradetime != null">
+        #{tradetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealtime != null">
+        #{dealtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="tradesign != null">
+        #{tradesign,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hucheng.common.entity.TdTrade">
+    update td_trade
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="coincode != null">
+        coincode = #{coincode,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="deal != null">
+        deal = #{deal,jdbcType=DECIMAL},
+      </if>
+      <if test="gCoincode != null">
+        g_coincode = #{gCoincode,jdbcType=VARCHAR},
+      </if>
+      <if test="gnum != null">
+        gnum = #{gnum,jdbcType=DECIMAL},
+      </if>
+      <if test="fCoincode != null">
+        f_coincode = #{fCoincode,jdbcType=VARCHAR},
+      </if>
+      <if test="fnum != null">
+        fnum = #{fnum,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="tradetime != null">
+        tradetime = #{tradetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealtime != null">
+        dealtime = #{dealtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="tradesign != null">
+        tradesign = #{tradesign,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tdid = #{tdid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hucheng.common.entity.TdTrade">
+    update td_trade
+    set userid = #{userid,jdbcType=INTEGER},
+      coincode = #{coincode,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      num = #{num,jdbcType=DECIMAL},
+      deal = #{deal,jdbcType=DECIMAL},
+      g_coincode = #{gCoincode,jdbcType=VARCHAR},
+      gnum = #{gnum,jdbcType=DECIMAL},
+      f_coincode = #{fCoincode,jdbcType=VARCHAR},
+      fnum = #{fnum,jdbcType=DECIMAL},
+      type = #{type,jdbcType=INTEGER},
+      tradetime = #{tradetime,jdbcType=TIMESTAMP},
+      dealtime = #{dealtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      tradesign = #{tradesign,jdbcType=VARCHAR}
+    where tdid = #{tdid,jdbcType=INTEGER}
+  </update>
+</mapper>
